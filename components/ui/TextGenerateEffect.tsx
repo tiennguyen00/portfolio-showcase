@@ -39,15 +39,18 @@ export const TextGenerateEffect = ({
               } opacity-0`}
             >
               {idx > 3 ? (
-                <FlipWords
-                  words={[
-                    "User Experiences",
-                    "User Inteface",
-                    "Dynamic Website",
-                  ]}
-                  duration={5000}
-                  className="!text-purple"
-                />
+                <>
+                  <br />
+                  <FlipWords
+                    words={[
+                      "User Experience",
+                      "User Inteface",
+                      "Dynamic Website",
+                    ]}
+                    duration={5000}
+                    className="!text-purple"
+                  />
+                </>
               ) : (
                 <>{word} </>
               )}

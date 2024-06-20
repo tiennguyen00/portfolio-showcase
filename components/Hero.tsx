@@ -3,6 +3,10 @@ import { FaLocationArrow } from "react-icons/fa6";
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { BackgroundBeams } from "./ui/BackgroundBeams";
+import { HoverBorderGradient } from "./ui/HoverBorderGradient";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
@@ -11,6 +15,7 @@ const Hero = () => {
        *  UI: Spotlights
        *  Link: https://ui.aceternity.com/components/spotlight
        */}
+
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -28,16 +33,14 @@ const Hero = () => {
        *  change bg color to bg-black-100 and reduce grid color from
        *  0.2 to 0.03
        */}
-      <div
-        className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
-       absolute top-0 left-0 flex items-center justify-center"
-      >
-        {/* Radial gradient for the container to give a faded look */}
-        <div
-          // chnage the bg to bg-black-100, so it matches the bg color and will blend in
+
+      <div className="h-full max-h-[750px] w-full dark:bg-black-100 bg-white absolute top-0 left-0 flex items-center justify-center">
+        <BackgroundBeams />
+
+        {/* <div
           className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
          bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
-        />
+        /> */}
       </div>
 
       <div className="flex justify-center relative my-20 z-10">
@@ -60,13 +63,20 @@ const Hero = () => {
             Hi! I&apos;m Tien, a Next.js Developer based in VietNam.
           </p>
 
-          <a href="#about">
-            <MagicButton
-              title="Show my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
+          <HoverBorderGradient
+            containerClassName="min-w-[100px] px-4 py-2 bg-black-200 mt-4 rounded-lg"
+            className="w-full bg-transparent"
+          >
+            <Link
+              href={"#about"}
+              className={cn(
+                "relative dark:text-neutral-50 items-center flex space-x-2 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 text-center justify-center"
+              )}
+            >
+              <FaLocationArrow size="26px" />
+              <span className="text-2xl !cursor-pointer">Show my work</span>
+            </Link>
+          </HoverBorderGradient>
         </div>
       </div>
     </div>
