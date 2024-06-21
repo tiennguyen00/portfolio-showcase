@@ -1,6 +1,13 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import React, { useRef } from "react";
+import {
+  useScroll,
+  useTransform,
+  motion,
+  MotionValue,
+  easeInOut,
+  useSpring,
+} from "framer-motion";
 
 export const ContainerScroll = ({
   titleComponent,
@@ -10,7 +17,7 @@ export const ContainerScroll = ({
   children: React.ReactNode;
 }) => {
   const containerRef = useRef<any>(null);
-  const { scrollYProgress, scrollY } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: containerRef,
   });
 
@@ -31,9 +38,16 @@ export const ContainerScroll = ({
     return isMobile ? [0.9, 0.7] : [1, 1.05];
   };
 
-  const rotate = useTransform(scrollYProgress, [0, 0.8], [0, 20]);
-  const scale = useTransform(scrollYProgress, [0, 0.8], scaleDimensions());
-  const translate = useTransform(scrollYProgress, [0, 0.8], [-100, 0]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 20], {
+    ease: easeInOut,
+  });
+  const rotateSpring = useSpring(rotate, { stiffness: 100, damping: 10 });
+  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions(), {
+    ease: easeInOut,
+  });
+  const translate = useTransform(scrollYProgress, [0, 1], [-80, 0], {
+    ease: easeInOut,
+  });
 
   return (
     <div
@@ -47,7 +61,7 @@ export const ContainerScroll = ({
         }}
       >
         <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
+        <Card rotate={rotateSpring} translate={translate} scale={scale}>
           {children}
         </Card>
       </div>
@@ -71,6 +85,7 @@ export const Header = ({ translate, titleComponent }: any) => {
 export const Card = ({
   rotate,
   scale,
+  translate,
   children,
 }: {
   rotate: MotionValue<number>;
@@ -83,17 +98,7 @@ export const Card = ({
       style={{
         rotateX: rotate,
         scale,
-      }}
-      transition={{
-        scale: {
-          ease: "easeInOut",
-        },
-        rotate: {
-          ease: "easeInOut",
-        },
-        translate: {
-          ease: "easeInOut",
-        },
+        transform: `translateY(${translate}px)`,
       }}
       className="-mt-12  w-full p-2 md:p-6 ease-in-out"
     >

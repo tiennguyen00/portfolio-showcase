@@ -4,6 +4,7 @@ import React from "react";
 
 import { companies, testimonials } from "@/data";
 import { InfiniteMovingCards } from "./ui/InfiniteCards";
+import { LinkPreview } from "./ui/LinkPreview";
 
 const Clients = () => {
   return (
@@ -22,12 +23,13 @@ const Clients = () => {
             items={testimonials}
             direction="right"
             speed="slow"
+            className="z-50"
           />
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10">
           {companies.map((company) => (
-            <React.Fragment key={company.id}>
+            <LinkPreview key={company.id} url={company.link}>
               <div className="flex md:max-w-60 max-w-32 gap-2">
                 <img
                   src={company.img}
@@ -41,7 +43,7 @@ const Clients = () => {
                   className="md:w-24 w-20"
                 />
               </div>
-            </React.Fragment>
+            </LinkPreview>
           ))}
         </div>
       </div>
