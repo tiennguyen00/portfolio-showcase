@@ -23,7 +23,6 @@ const Clients = () => {
             items={testimonials}
             direction="right"
             speed="slow"
-            className="z-50"
           />
         </div>
 

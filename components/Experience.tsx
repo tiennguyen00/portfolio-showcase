@@ -2,16 +2,17 @@ import React from "react";
 
 import { workExperience } from "@/data";
 import { Button } from "./ui/MovingBorders";
+import { HoverEffect } from "./ui/CarrdHoverEffect";
 
 const Experience = () => {
   return (
-    <div className="py-20 w-full">
+    <div className="py-20 w-full px-10">
       <h1 className="heading">
         My <span className="text-purple">work experience</span>
       </h1>
 
-      <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
-        {workExperience.map((card) => (
+      <HoverEffect
+        items={workExperience.map((card) => (
           <Button
             key={card.id}
             //   random duration will be fun , I think , may be not
@@ -27,7 +28,7 @@ const Experience = () => {
               borderRadius: `calc(1.75rem* 0.96)`,
             }}
             // remove bg-white dark:bg-slate-900
-            className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+            className="flex-1 text-black z-50 dark:text-white border-neutral-200 dark:border-slate-800"
           >
             <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
               <img
@@ -46,7 +47,7 @@ const Experience = () => {
             </div>
           </Button>
         ))}
-      </div>
+      />
     </div>
   );
 };

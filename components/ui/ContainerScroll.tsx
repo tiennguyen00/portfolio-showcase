@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   useScroll,
   useTransform,
@@ -7,6 +7,7 @@ import {
   MotionValue,
   easeInOut,
   useSpring,
+  useMotionValueEvent,
 } from "framer-motion";
 
 export const ContainerScroll = ({
@@ -19,6 +20,7 @@ export const ContainerScroll = ({
   const containerRef = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["center end", "start start"],
   });
 
   const [isMobile, setIsMobile] = React.useState(false);
@@ -38,20 +40,20 @@ export const ContainerScroll = ({
     return isMobile ? [0.9, 0.7] : [1, 1.05];
   };
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 20], {
+  const rotate = useTransform(scrollYProgress, [0, 0.8], [20, 0], {
     ease: easeInOut,
   });
   const rotateSpring = useSpring(rotate, { stiffness: 100, damping: 10 });
-  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions(), {
+  const scale = useTransform(scrollYProgress, [0, 0.8], scaleDimensions(), {
     ease: easeInOut,
   });
-  const translate = useTransform(scrollYProgress, [0, 1], [-80, 0], {
+  const translate = useTransform(scrollYProgress, [0, 0.8], [-80, 0], {
     ease: easeInOut,
   });
 
   return (
     <div
-      className="flex  items-center justify-center  relative"
+      className="flex items-center justify-center  relative"
       ref={containerRef}
     >
       <div
