@@ -8,7 +8,7 @@ import { LinkPreview } from "./ui/LinkPreview";
 
 const Clients = () => {
   return (
-    <section id="testimonials" className="py-20">
+    <section id="feedbacks" className="py-20 px-10">
       <h1 className="heading">
         Kind words from
         <span className="text-purple"> satisfied clients</span>

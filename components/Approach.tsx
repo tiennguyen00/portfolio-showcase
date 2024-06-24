@@ -5,7 +5,7 @@ import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
 const Approach = () => {
   return (
-    <section className="w-full py-20">
+    <section className="w-full py-20 px-16" id="contacts">
       <h1 className="heading">
         My <span className="text-purple">approach</span>
       </h1>
@@ -86,7 +86,7 @@ const Card = ({
       onMouseLeave={() => setHovered(false)}
       // change h-[30rem] to h-[35rem], add rounded-3xl
       className="border border-black/[0.2] group/canvas-card flex items-center justify-center
-       dark:border-white/[0.2]  max-w-sm w-fit p-4 relative lg:h-[35rem] rounded-3xl "
+       dark:border-white/[0.2] max-w-full sm:max-w-md w-full sm:w-fit p-4 relative h-[40rem] sm:h-[35rem] rounded-3xl "
       style={{
         //   add these two
         //   you can generate the color from here https://cssgradient.io/

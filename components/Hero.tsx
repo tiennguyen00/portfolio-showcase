@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-36">
+    <div className="pb-20 !pt-[8rem] relative">
       {/**
        *  UI: Spotlights
        *  Link: https://ui.aceternity.com/components/spotlight

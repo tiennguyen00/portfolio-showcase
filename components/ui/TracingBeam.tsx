@@ -53,7 +53,7 @@ export const TracingBeam = ({
         className
       )}
     >
-      <div className="absolute left-4 top-3">
+      <div className="absolute hidden sm:block left-4 top-3">
         <motion.div
           transition={{
             duration: 0.2,

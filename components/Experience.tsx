@@ -6,7 +6,7 @@ import { HoverEffect } from "./ui/CarrdHoverEffect";
 
 const Experience = () => {
   return (
-    <div className="py-20 w-full px-10">
+    <div className="py-20 w-full px-10" id="works">
       <h1 className="heading">
         My <span className="text-purple">work experience</span>
       </h1>

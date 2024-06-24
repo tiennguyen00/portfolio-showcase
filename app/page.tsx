@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <TracingBeam>
-        <div className=" w-full">
+        <div className="w-full">
           <FloatingNav
             navItems={navItems}
             className="w-full max-w-full top-0 !rounded-none space-x-12"
